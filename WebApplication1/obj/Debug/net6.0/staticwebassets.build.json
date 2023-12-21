@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Yo6rvEzs1g3j9bPjCNSkd1I+zyFqVJvMudN09wJfo3c=",
+  "Hash": "GjREREIVUTP+yxjKZcokq65IlFm08zrSMxvR8lwnCNw=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/uploads/empty.jpeg"
+    },
+    {
+      "Identity": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/images/uploads/lenovo.jpeg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "images/uploads/lenovo.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/uploads/lenovo.jpeg"
     },
     {
       "Identity": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/js/site.js",

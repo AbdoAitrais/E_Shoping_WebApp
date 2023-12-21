@@ -1,28 +1,26 @@
-@page
-@model WebApplication1.Pages.Products.IndexModel
+@model IEnumerable<WebApplication1.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
+    
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <form method="get">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
-
         <div class="mb-6">
-            <input asp-for="SearchString" placeholder="Search by name" type="text" id="default-input" class="bg-gray-700 border-gray-500 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg block w-full p-2.5 ">
+            <input name="searchString" placeholder="Search by name" type="text" id="default-input" class="bg-gray-700 border-gray-500 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg block w-full p-2.5">
         </div>
-
         <div class="mb-6">
-            <select asp-for="SelectedCategory" class="bg-gray-700 border-gray-500 text-white focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg w-full p-2.5">
+            <select name="selectedCategory" class="bg-gray-700 border-gray-500 text-white focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg w-full p-2.5">
                 <option value="">All Categories</option>
-                @if (Model.Product != null && Model.Product.Any())
+                @if (Model.Any())
                 {
-                    @foreach (var category in Model.Product.Select(p => p.Categorie).Distinct())
+                    @foreach (var category in Model.Select(p => p.Categorie).Distinct())
                     {
                         <option value="@category">@category</option>
                     }
@@ -31,20 +29,18 @@
                 {
                     <p>No products available.</p>
                 }
-                
             </select>
         </div>
     </div>
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-    
 </form>
 
 <section
     id="Projects"
     class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
- @if (Model.Product != null && Model.Product.Any())
+ @if (Model.Any())
  {
-     @foreach (var item in Model.Product)
+     @foreach (var item in Model)
 {   
     <div class="w-full max-w-sm border rounded-lg shadow bg-gray-800 border-gray-700">
         <a href="#">
@@ -117,7 +113,7 @@
     </div>
 </div>
 
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </div>
         </div>
     </div>

@@ -27,6 +27,17 @@
         <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Cart\Index.cshtml" />
+    </ItemGroup>
+
+<!--    <ItemGroup>-->
+<!--      <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />-->
+<!--      <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />-->
+<!--    </ItemGroup>-->
+
     <Target Name="Tailwind" BeforeTargets="Build">
         <Exec Command="npm run css:build" />
     </Target>

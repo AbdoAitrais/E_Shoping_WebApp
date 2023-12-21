@@ -1,0 +1,46 @@
+
+@model IEnumerable<CartItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Cart</h1>
+
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+        <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Product Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Quantity
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                    @item.Product.Name
+                </th>
+                <td class="px-6 py-4">
+                    @item.Product.Price$
+                </td>
+                <td class="px-6 py-4">
+                    @item.Quantity
+                </td>
+            </tr>
+        }
+        
+        </tbody>
+    </table>
+</div>
+
+
