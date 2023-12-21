@@ -1,0 +1,63 @@
+@model IEnumerable<Purchase>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Purchases</h1>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <div class="relative overflow-x-auto">
+    
+        <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Product Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Quantity
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Purchase Date
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                @if( item != null && item.PurchasedProducts != null && item.PurchasedProducts.Any()){
+                
+            @foreach (var product in item.PurchasedProducts)
+            {
+                <tr class="bg-gray-800">
+                    <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                        @product.Product?.Name
+                    </th>
+                    <td class="px-6 py-4">
+                        @product.Quantity
+                    </td>
+                    <td class="px-6 py-4">
+                        @item.PurchaseDate
+                    </td>
+                </tr>
+            }
+                
+                }
+                else
+                {
+                    <tr class="bg-gray-800 w-full" >
+                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                            No items in cart
+                        </th>
+                    </tr>
+                }
+        
+
+            </tbody>
+        </table>
+       
+        </div>
+    }
+}

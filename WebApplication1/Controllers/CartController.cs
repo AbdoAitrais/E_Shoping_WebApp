@@ -3,16 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApplication1.Controllers
 {
     public class CartController : Controller
     {
         private readonly WebApplication1Context _dbContext;
+        private readonly UserManager<User> _userManager;
 
-        public CartController(WebApplication1Context dbContext)
+        public CartController(WebApplication1Context dbContext, UserManager<User> userManager)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
         }
 
         public IActionResult AddToCart(int productId, int quantity)
@@ -60,6 +64,54 @@ namespace WebApplication1.Controllers
             return View(cart);
         }
 
-        // Other cart actions...
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Purchase(Dictionary<int, int> products)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Challenge(); // Redirects unauthenticated users to the login page
+            }
+            
+            var user = await _userManager.GetUserAsync(User);
+            
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var purchase = new Purchase
+            {
+                User = user,
+                PurchaseDate = DateTime.UtcNow,
+                PurchasedProducts = new List<PurchasedProduct>()
+            };
+
+            foreach (var productId in products.Keys)
+            {
+                var product = await _dbContext.Product.FindAsync(productId);
+
+                if (product == null)
+                {
+                    return NotFound($"Product with ID {productId} not found.");
+                }
+
+                var purchasedProduct = new PurchasedProduct
+                {
+                    Product = product,
+                    Quantity = products[productId],
+                    // Set other properties related to the purchased product
+                };
+
+                purchase.PurchasedProducts.Add(purchasedProduct);
+            }
+
+            _dbContext.Purchases.Add(purchase);
+            await _dbContext.SaveChangesAsync();
+            // Clear the cart
+            HttpContext.Session.SetObject("Cart", new List<CartItem>());
+
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

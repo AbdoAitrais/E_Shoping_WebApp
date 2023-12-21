@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Data;
 using WebApplication1.Services;
+using Microsoft.AspNetCore.Identity;
+using WebApplication1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +12,20 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<WebApplication1Context>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("WebApplication1Context") ?? throw new InvalidOperationException("Connection string 'WebApplication1Context' not found.")));
+
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<WebApplication1Context>();
+
 // session 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.Name = ".Order.Session";
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
+
 });
 // routing
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
@@ -42,6 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

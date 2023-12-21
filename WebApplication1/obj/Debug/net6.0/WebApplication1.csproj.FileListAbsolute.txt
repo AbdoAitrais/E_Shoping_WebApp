@@ -283,3 +283,11 @@
 /home/abdo/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll
 /home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/package-lock.json
 /home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/package.json
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.Identity.UI.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.FileProviders.Embedded.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
+/home/abdo/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.MvcApplicationPartsAssemblyInfo.cs
