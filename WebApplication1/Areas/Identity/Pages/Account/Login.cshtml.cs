@@ -116,7 +116,9 @@ namespace WebApplication1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    // if return url is purchase, redirect to cart controller
+                    return RedirectToAction("Index", "Cart");
+                    
                 }
                 if (result.RequiresTwoFactor)
                 {

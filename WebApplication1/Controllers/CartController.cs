@@ -70,7 +70,8 @@ namespace WebApplication1.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return Challenge(); // Redirects unauthenticated users to the login page
+                // redirect to /Identity/Account/Login without a return URL
+                return Challenge  ();
             }
             
             var user = await _userManager.GetUserAsync(User);

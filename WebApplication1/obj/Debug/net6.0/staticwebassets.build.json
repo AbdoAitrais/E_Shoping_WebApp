@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8Aor8VdS293LdvFntPspXv3wvUdvPOxRCLuGTq3wzD8=",
+  "Hash": "dObjbk4MJpYSAQk28509jAiZ3rOzyCRwXTP09fZWnUE=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -1188,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/uploads/lenovo.jpeg"
+    },
+    {
+      "Identity": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/images/uploads/samsung-a50.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "images/uploads/samsung-a50.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/uploads/samsung-a50.jpg"
     },
     {
       "Identity": "/home/abdo/RiderProjects/WebApplication1/WebApplication1/wwwroot/js/site.js",
